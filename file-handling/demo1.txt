@@ -1,0 +1,3 @@
+Write operation performed!
+Hi!
+Append at the end!
