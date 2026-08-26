@@ -1,0 +1,16 @@
+<employees>
+    <employee id="101" active="true">
+        <name>Khushboo</name>
+        <department>IT</department>
+    </employee>
+
+    <employee id="102" active="true">
+        <name>Payal</name>
+        <department>HR</department>
+    </employee>
+
+    <employee id="101" active="false">
+        <name>Preksha</name>
+        <department>IT</department>
+    </employee>
+<employee id="104" active="true"><name>Tejasvi</name><department>IT</department></employee><employee id="104" active="true"><name>Tejasvi</name><department>IT</department></employee></employees>

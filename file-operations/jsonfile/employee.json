@@ -1,0 +1,45 @@
+{
+    "company": "ABC Technologies",
+    "employees": [
+        {
+            "id": 101,
+            "name": "Khushboo",
+            "department": "IT",
+            "skills": [
+                "Python",
+                "SQL"
+            ],
+            "active": true
+        },
+        {
+            "id": 102,
+            "name": "Payal",
+            "department": "HR",
+            "skills": [
+                "Recruitment",
+                "Communication"
+            ],
+            "active": true
+        },
+        {
+            "id": 103,
+            "name": "Preksha",
+            "department": "IT",
+            "skills": [
+                "Java",
+                "Docker"
+            ],
+            "active": false
+        },
+        {
+            "id": 104,
+            "name": "David",
+            "department": "IT",
+            "skills": [
+                "Python",
+                "Docker"
+            ],
+            "active": true
+        }
+    ]
+}

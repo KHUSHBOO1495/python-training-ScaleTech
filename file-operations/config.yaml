@@ -1,0 +1,15 @@
+application:
+  name: Employee Management System
+  version: 1.0
+  debug: true
+
+database:
+  host: localhost
+  port: 5432
+  username: admin
+
+employees:
+  - name: Khushboo
+    department: IT
+  - name: Payal
+    department: HR

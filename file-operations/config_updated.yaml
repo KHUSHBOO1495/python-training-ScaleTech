@@ -1,0 +1,15 @@
+application:
+  debug: false
+  name: Employee Management System
+  version: 1.0
+database:
+  host: production-db
+  port: 5432
+  username: admin
+employees:
+- department: IT
+  name: Khushboo
+- department: HR
+  name: Payal
+- department: IT
+  name: David
