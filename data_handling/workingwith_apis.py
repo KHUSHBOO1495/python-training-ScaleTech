@@ -21,4 +21,24 @@ print(df)
 print(df.columns)
 print(df['address.city'])
 
-df = df[['name', 'email', 'phone', 'address.city', 'company.name']]
+data = df[['name', 'email', 'phone', 'address.city', 'company.name']]
+
+
+# -----------------------------------------------------
+
+url = "https://jsonplaceholder.typicode.com/users"
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+    df = pd.json_normalize(data)
+    print(len(df)) # print(df['name'].count())
+    print(df.shape)
+    print(df.columns)
+    print(df[['name', 'email', 'phone', 'address.city', 'company.name']])
+    print(df[df['address.city'] == 'South Christy'])
+    print(df.groupby('address.city')['name'].count())
+    df.to_csv("users_api_data.csv", index=False)
+
+except requests.exceptions.RequestException as e:
+    print("API request failed:", e)
