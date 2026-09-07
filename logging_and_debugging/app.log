@@ -1,0 +1,7 @@
+2026-09-07 18:41:43,782 - INFO - Application started
+2026-09-07 18:41:43,782 - ERROR - Calculation failed
+Traceback (most recent call last):
+  File "D:\Work\Projects\learn-build-repeat\logging_and_debugging\logging_demo.py", line 25, in <module>
+    result = number / divisor
+ZeroDivisionError: division by zero
+2026-09-07 18:41:43,783 - INFO - Application finished

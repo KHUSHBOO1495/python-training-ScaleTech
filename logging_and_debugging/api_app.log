@@ -1,0 +1,7 @@
+2026-09-07 18:58:04,405 - __main__ - INFO - Starting API request
+2026-09-07 18:58:04,413 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): jsonplaceholder.typicode.com:443
+2026-09-07 18:58:04,842 - urllib3.connectionpool - DEBUG - https://jsonplaceholder.typicode.com:443 "GET /users HTTP/1.1" 200 1847
+2026-09-07 18:58:04,845 - __main__ - INFO - API response received with status code 200
+2026-09-07 18:58:04,846 - __main__ - INFO - JSON response parsed successfully
+2026-09-07 18:58:04,850 - __main__ - INFO - Created DataFrame with 10 rows
+2026-09-07 18:58:04,864 - __main__ - INFO - Data saved successfully
