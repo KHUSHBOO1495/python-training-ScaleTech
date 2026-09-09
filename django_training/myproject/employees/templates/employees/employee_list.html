@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" href="{% static 'employees/style.css' %}">
+</head>
+<body>
+
+    <h1>Employee List</h1>
+
+    {% for employee in employees %}
+    <div class="employee">
+        <h2>{{ employee.name }}</h2>
+        <p>Age: {{ employee.age }}</p>
+        <p>Designation: {{ employee.designation }}</p>
+    </div>
+{% endfor %}
+
+</body>
+</html>
