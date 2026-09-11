@@ -7,13 +7,26 @@
 </head>
 <body>
 
-    <h1>Employee List</h1>
+    <div style="justify-content: flex-end;">
+        <h1>Employee List</h1>
+        <a href="{% url 'employee_create' %}">Add Employee</a>
+    </div>
 
     {% for employee in employees %}
     <div class="employee">
         <h2>{{ employee.name }}</h2>
         <p>Age: {{ employee.age }}</p>
         <p>Designation: {{ employee.designation }}</p>
+        <p>Projects: {{ employee.projects }}</p>
+
+        <form method="post" action="{% url 'employee_delete' employee.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+
+        <a href="{% url 'employee_update' employee.id %}">
+            Update
+        </a>
     </div>
 {% endfor %}
 

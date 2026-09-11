@@ -31,6 +31,12 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_info(self):
+        return f"{self.name} - {self.designation}"
+
+    def get_project_count(self):
+        return self.projects.count()
     
 class EmployeeProfile(models.Model):
     employee = models.OneToOneField(
