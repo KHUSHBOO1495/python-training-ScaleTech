@@ -11,6 +11,11 @@
         <h1>Employee List</h1>
         <a href="{% url 'employee_create' %}">Add Employee</a>
     </div>
+    <div>
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+    </div>
 
     {% for employee in employees %}
     <div class="employee">

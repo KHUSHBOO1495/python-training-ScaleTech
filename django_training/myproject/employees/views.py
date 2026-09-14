@@ -4,20 +4,25 @@ from django.views import View
 from django.views.generic import ListView
 from django.http import HttpResponse
 from .forms import EmployeeForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return HttpResponse("Welcome to the Employee Management System")
+    return render(
+        request,
+        "employees/home.html"
+    )
 
-
-# def employee_list(request):
-#     employees = Employee.objects.all()
-#     if request.method == 'GET':
-#         return render(
-#             request,
-#             "employees/employee_list.html",
-#             {"employees": employees}
-#         )
-#     return HttpResponse("Unsupported request method")
+@login_required
+def employee_list(request):
+    employees = Employee.objects.all()
+    if request.method == 'GET':
+        return render(
+            request,
+            "employees/employee_list.html",
+            {"employees": employees}
+        )
+    return HttpResponse("Unsupported request method")
 
 # class EmployeeListView(View):
 
@@ -30,11 +35,12 @@ def home(request):
 #             {"employees": employees}
 #         )
 
-class EmployeeListView(ListView):
-    model = Employee
-    template_name = "employees/employee_list.html"
-    context_object_name = "employees"
+# class EmployeeListView(ListView):
+#     model = Employee
+#     template_name = "employees/employee_list.html"
+#     context_object_name = "employees"
 
+@login_required
 def employee_create(request):
 
     if request.method == "POST":
@@ -53,12 +59,14 @@ def employee_create(request):
         {"form": form}
     )
 
+@login_required
 def employee_delete(request, id):
     employee = Employee.objects.get(id=id)
     employee.delete()
 
     return redirect("employee_list")
 
+@login_required
 def employee_update(request, id):
     employee = Employee.objects.get(id=id)
 
@@ -77,3 +85,33 @@ def employee_update(request, id):
         "employees/employee_form.html",
         {"form": form}
     )
+
+def user_login(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect("employee_list")
+
+        else:
+            return render(
+                request,
+                "employees/login.html",
+                {"error": "Invalid username or password."}
+            )
+
+    return render(request, "employees/login.html")
+
+def user_logout(request):
+    logout(request)
+    return redirect("login")

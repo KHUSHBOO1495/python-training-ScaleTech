@@ -7,7 +7,34 @@
     <h1>Add Employee</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+        
+        <div>
+            {{ form.age.label_tag }}
+            {{ form.age }}
+            {{ form.age.errors }}
+        </div>
+        
+        <div>
+            {{ form.designation.label_tag }}
+            {{ form.designation }}
+            {{ form.designation.errors }}
+        </div>
+        <div>
+            {{ form.department.label_tag }}
+            {{ form.department }}
+            {{ form.department.errors }}
+        </div>
+        
+        <div>
+            {{ form.projects.label_tag }}
+            {{ form.projects }}
+            {{ form.projects.errors }}
+        </div>
         <button type="submit">Save Employee</button>
     </form>
 </body>
