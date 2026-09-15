@@ -9,7 +9,9 @@
 
     <div style="justify-content: flex-end;">
         <h1>Employee List</h1>
-        <a href="{% url 'employee_create' %}">Add Employee</a>
+        {% if perms.employees.add_employee %}
+            <a href="{% url 'employee_create' %}">Add Employee</a>
+        {% endif %}
     </div>
     <div>
         <a href="{% url 'logout' %}">
@@ -22,16 +24,23 @@
         <h2>{{ employee.name }}</h2>
         <p>Age: {{ employee.age }}</p>
         <p>Designation: {{ employee.designation }}</p>
-        <p>Projects: {{ employee.projects }}</p>
+        <p>
+            Projects:
+            {% for project in employee.projects.all %}
+                {{ project.name }}
+            {% endfor %}
+        </p>
 
-        <form method="post" action="{% url 'employee_delete' employee.id %}">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-        </form>
+        {% if perms.employees.delete_employee %}
+            <form method="post" action="{% url 'employee_delete' employee.id %}">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+        {% endif %}
 
-        <a href="{% url 'employee_update' employee.id %}">
-            Update
-        </a>
+        {% if perms.employees.change_employee %}
+            <a href="{% url 'employee_update' employee.id %}">Update</a>
+        {% endif %}
     </div>
 {% endfor %}
 

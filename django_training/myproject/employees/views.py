@@ -5,7 +5,7 @@ from django.views.generic import ListView
 from django.http import HttpResponse
 from .forms import EmployeeForm
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 def home(request):
     return render(
@@ -14,6 +14,10 @@ def home(request):
     )
 
 @login_required
+@permission_required(
+    "employees.view_employee",
+    raise_exception=True
+)
 def employee_list(request):
     employees = Employee.objects.all()
     if request.method == 'GET':
@@ -41,6 +45,10 @@ def employee_list(request):
 #     context_object_name = "employees"
 
 @login_required
+@permission_required(
+    "employees.add_employee",
+    raise_exception=True
+)
 def employee_create(request):
 
     if request.method == "POST":
@@ -60,6 +68,10 @@ def employee_create(request):
     )
 
 @login_required
+@permission_required(
+    "employees.delete_employee",
+    raise_exception=True
+)
 def employee_delete(request, id):
     employee = Employee.objects.get(id=id)
     employee.delete()
@@ -67,6 +79,10 @@ def employee_delete(request, id):
     return redirect("employee_list")
 
 @login_required
+@permission_required(
+    "employees.change_employee",
+    raise_exception=True
+)
 def employee_update(request, id):
     employee = Employee.objects.get(id=id)
 
