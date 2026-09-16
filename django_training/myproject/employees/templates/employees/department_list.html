@@ -1,0 +1,16 @@
+{% extends "employees/base.html" %}
+
+{% block title %}
+Department List
+{% endblock %}
+
+{% block content %}
+    <h1>Department List</h1>
+    <a href="{% url 'department_create' %}">Add Department</a>
+    {% for department in departments %}
+        <p>{{ department.name }}</p>
+        <a href="{% url 'department_detail' department.pk %}">View</a>
+    {% empty %}
+        <p>No departments found.</p>
+    {% endfor %}
+{% endblock %}

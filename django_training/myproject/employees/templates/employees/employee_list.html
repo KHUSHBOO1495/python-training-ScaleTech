@@ -1,12 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Employees</title>
-    <link rel="stylesheet" href="{% static 'employees/style.css' %}">
-</head>
-<body>
+{% extends "employees/base.html" %}
 
+{% block title %}
+Employee List
+{% endblock %}
+
+{% block content %}
     <div style="justify-content: flex-end;">
         <h1>Employee List</h1>
         {% if perms.employees.add_employee %}
@@ -44,5 +42,24 @@
     </div>
 {% endfor %}
 
-</body>
-</html>
+<div class="pagination">
+
+    {% if employees.has_previous %}
+        <a href="?page={{ employees.previous_page_number }}">
+            Previous
+        </a>
+    {% endif %}
+
+    <span>
+        Page {{ employees.number }} of {{ employees.paginator.num_pages }}
+    </span>
+
+    {% if employees.has_next %}
+        <a href="?page={{ employees.next_page_number }}">
+            Next
+        </a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

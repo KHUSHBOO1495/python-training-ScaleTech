@@ -1,0 +1,20 @@
+{% extends "employees/base.html" %}
+
+{% block title %}
+Department Details
+{% endblock %}
+
+{% block content %}
+
+    <h1>Department: {{ department.name }}</h1>
+
+    <h2>Employees</h2>
+
+    {% for employee in department.employees.all %}
+        <p>
+            {{ employee.name }} - {{ employee.designation }}
+        </p>
+    {% empty %}
+        <p>No employees found in this department.</p>
+    {% endfor %}
+{% endblock %}

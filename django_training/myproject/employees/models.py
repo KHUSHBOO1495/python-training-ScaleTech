@@ -24,6 +24,12 @@ class Employee(models.Model):
     age = models.IntegerField()
     designation = models.CharField(max_length=100)
 
+    profile_image = models.ImageField(
+        upload_to="profile_images/",
+        null=True,
+        blank=True
+    )
+
     department = models.ForeignKey(
         Department,
         on_delete=models.CASCADE,

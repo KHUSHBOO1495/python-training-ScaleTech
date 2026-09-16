@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee
+from .models import Employee, Department
 
 class EmployeeForm(forms.ModelForm):
     def clean_age(self):
@@ -28,4 +28,9 @@ class EmployeeForm(forms.ModelForm):
 
     class Meta:
         model = Employee
-        fields = ['name', 'age', 'designation', 'department', 'projects']
+        fields = ['name', 'age', 'designation', 'department', 'projects', 'profile_image']
+
+class DepartmentForm(forms.ModelForm):
+    class Meta:
+        model = Department
+        fields = ["name"]

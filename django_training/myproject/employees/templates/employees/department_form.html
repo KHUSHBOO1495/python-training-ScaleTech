@@ -1,0 +1,22 @@
+{% extends "employees/base.html" %}
+
+{% block title %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+    <h1>Create Department</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Save Department</button>
+    </form>
+
+    <a href="{% url 'department_list' %}">
+        Back to Departments
+    </a>
+{% endblock %}

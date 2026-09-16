@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Employee</title>
-</head>
-<body>
+{% extends "employees/base.html" %}
+
+{% block title %}
+Add Employee
+{% endblock %}
+
+{% block content %}
     <h1>Add Employee</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
             {{ form.name.label_tag }}
@@ -29,13 +30,16 @@
             {{ form.department }}
             {{ form.department.errors }}
         </div>
-        
         <div>
             {{ form.projects.label_tag }}
             {{ form.projects }}
             {{ form.projects.errors }}
         </div>
+        <div>
+            {{ form.profile_image.label_tag }}
+            {{ form.profile_image }}
+            {{ form.profile_image.errors }}
+        </div>
         <button type="submit">Save Employee</button>
     </form>
-</body>
-</html>
+{% endblock %}

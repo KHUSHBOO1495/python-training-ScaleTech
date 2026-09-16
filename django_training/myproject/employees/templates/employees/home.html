@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
+{% extends "employees/base.html" %}
 
-<head>
-    <title>Home</title>
-</head>
+{% block title %}
+Department List
+{% endblock %}
 
-<body>
+{% block content %}
     <div>
         <p>Welcome to the Employee Management System</p>
         <a href="{% url 'login' %}">Login</a>
     </div>
-</body>
-
-</html>
+{% endblock %}
