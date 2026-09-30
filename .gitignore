@@ -8,3 +8,6 @@ venv/
 
 .vscode/
 .idea/
+
+# Django
+db.sqlite3
